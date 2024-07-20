@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace WfaOO
 {
+    public enum TipoConta
+    {
+        COMUM,
+        ESPECIAL
+    }
+
     class Conta
     {
         public int Conta_Nro { get; set; }
