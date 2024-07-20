@@ -17,25 +17,10 @@ namespace WfaOO
             InitializeComponent();
         }
 
-        // Conta mConta = new Conta(); PRT1
         Conta_Comum conta_Comum = new Conta_Comum();
         Conta_Especial conta_Especial = new Conta_Especial();
         private void btnCriarConta_Click(object sender, EventArgs e)
         {
-            /* REF PRT1
-            mConta.Conta_Nro = int.Parse(txtNroConta.Text);
-            mConta.Conta_Titular = txtTitular.Text;
-            mConta.Conta_Tipo = int.Parse(txtTipoConta.Text);
-            if(int.Parse(txtTipoConta.Text) == 1)
-            {
-                mConta.Conta_Limite = 0;
-            }
-            else
-            {
-                mConta.Conta_Limite = double.Parse(txtLimiteConta.Text);
-            }
-            lblSaldos.Text += "Saldo = " + mConta.Conta_Saldo + "\n";
-            lblSaldos.Text += "Limite = " + mConta.Conta_Limite + "\n";*/
             lblSaldos.Text = "";
             if (int.Parse(txtTipoConta.Text) == 1)
             {
@@ -61,10 +46,7 @@ namespace WfaOO
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
-            /* REF PART1
-            mConta.Depositar(double.Parse(txtValor.Text));
-            lblSaldos.Text += "Saldo = " + mConta.Conta_Saldo + "\n";
-            lblSaldos.Text += "Limite = " + mConta.Conta_Limite + "\n";*/
+
             if (int.Parse(txtTipoConta.Text) == 1)
             {
                 conta_Comum.Depositar(double.Parse(txtValor.Text));
@@ -84,10 +66,7 @@ namespace WfaOO
 
             try
             {
-                /* REF PRT1
-                mConta.Sacar(double.Parse(txtValor.Text));
-                lblSaldos.Text += "Saldo = " + mConta.Conta_Saldo + "\n";
-                lblSaldos.Text += "Limite = " + mConta.Conta_Limite + "\n";*/
+
                 if (int.Parse(txtTipoConta.Text) == 1)
                 {
                     conta_Comum.Sacar(double.Parse(txtValor.Text));
