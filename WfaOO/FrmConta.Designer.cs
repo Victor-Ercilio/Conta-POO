@@ -251,6 +251,7 @@
             this.cmbTipoConta.Name = "cmbTipoConta";
             this.cmbTipoConta.Size = new System.Drawing.Size(100, 21);
             this.cmbTipoConta.TabIndex = 18;
+            this.cmbTipoConta.SelectedIndexChanged += new System.EventHandler(this.cmbTipoConta_SelectedIndexChanged);
             // 
             // mskNroConta
             // 
