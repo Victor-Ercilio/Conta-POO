@@ -18,6 +18,9 @@ namespace WfaOO
         public FrmConta()
         {
             InitializeComponent();
+            contaComum = new Conta_Comum();
+            contaEspecial = new Conta_Especial();
+            gpTransConta.Enabled = false;
         }
 
         Conta_Comum conta_Comum = new Conta_Comum();
