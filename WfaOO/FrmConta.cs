@@ -12,6 +12,9 @@ namespace WfaOO
 {
     public partial class FrmConta : Form
     {
+        private Conta_Comum contaComum;
+        private Conta_Especial contaEspecial;
+
         public FrmConta()
         {
             InitializeComponent();
