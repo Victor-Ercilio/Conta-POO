@@ -65,6 +65,9 @@ namespace WfaOO
                 lblSaldos.Text += "Conta Comum\n";
                 lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
                 lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
+
+                lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
+                lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
             }
             else
             {
@@ -72,9 +75,14 @@ namespace WfaOO
                 conta_Especial.Conta_Titular = txtTitular.Text;
                 conta_Especial.Conta_Tipo = int.Parse(txtTipoConta.Text);
                 conta_Especial.Conta_Limite = double.Parse(txtLimiteConta.Text);
-                lblSaldos.Text += "Conta Especial\n";
+                lblSaldos.Text += $"Conta Especial {lstTrans.Items.Count}\n";
                 lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
                 lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
+
+                lstTrans.Items.Add(
+                    $"Saldo = {conta_Especial.Conta_Saldo}\t" + 
+                    $"Limite = {conta_Especial.Conta_Limite}\n");
+            }*/
             }
         }
 
@@ -86,12 +94,20 @@ namespace WfaOO
                 conta_Comum.Depositar(double.Parse(txtValor.Text));
                 lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
                 lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
+                
+                lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
+                lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
             }
             else
             {
                 conta_Especial.Depositar(double.Parse(txtValor.Text));
                 lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
                 lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
+
+                lstTrans.Items.Add(
+                    $"Saldo = {conta_Especial.Conta_Saldo}\t" +
+                    $"Limite = {conta_Especial.Conta_Limite}\n");
+                
             }
         }
 
@@ -106,12 +122,19 @@ namespace WfaOO
                     conta_Comum.Sacar(double.Parse(txtValor.Text));
                     lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
                     lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
+
+                    lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
+                    lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
                 }
                 else
                 {
                     conta_Especial.Sacar(double.Parse(txtValor.Text));
                     lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
                     lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
+
+                    lstTrans.Items.Add(
+                        $"Saldo = {conta_Especial.Conta_Saldo}\t" +
+                        $"Limite = {conta_Especial.Conta_Limite}\n");
                 }
             }
             catch (System.ArgumentException erro)
