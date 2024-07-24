@@ -38,12 +38,8 @@
             this.btnCriarConta = new System.Windows.Forms.Button();
             this.btnDepositar = new System.Windows.Forms.Button();
             this.btnSacar = new System.Windows.Forms.Button();
-            this.txtNroConta = new System.Windows.Forms.TextBox();
             this.txtTitular = new System.Windows.Forms.TextBox();
-            this.txtLimiteConta = new System.Windows.Forms.TextBox();
-            this.txtTipoConta = new System.Windows.Forms.TextBox();
             this.txtValor = new System.Windows.Forms.TextBox();
-            this.lblSaldos = new System.Windows.Forms.Label();
             this.gpCadConta = new System.Windows.Forms.GroupBox();
             this.gpTransConta = new System.Windows.Forms.GroupBox();
             this.lstTrans = new System.Windows.Forms.ListBox();
@@ -158,13 +154,6 @@
             this.btnSacar.UseVisualStyleBackColor = true;
             this.btnSacar.Click += new System.EventHandler(this.btnSacar_Click);
             // 
-            // txtNroConta
-            // 
-            this.txtNroConta.Location = new System.Drawing.Point(459, 60);
-            this.txtNroConta.Name = "txtNroConta";
-            this.txtNroConta.Size = new System.Drawing.Size(83, 20);
-            this.txtNroConta.TabIndex = 1;
-            // 
             // txtTitular
             // 
             this.txtTitular.Location = new System.Drawing.Point(15, 98);
@@ -172,34 +161,12 @@
             this.txtTitular.Size = new System.Drawing.Size(197, 20);
             this.txtTitular.TabIndex = 3;
             // 
-            // txtLimiteConta
-            // 
-            this.txtLimiteConta.Location = new System.Drawing.Point(459, 90);
-            this.txtLimiteConta.Name = "txtLimiteConta";
-            this.txtLimiteConta.Size = new System.Drawing.Size(100, 20);
-            this.txtLimiteConta.TabIndex = 4;
-            // 
-            // txtTipoConta
-            // 
-            this.txtTipoConta.Location = new System.Drawing.Point(459, 34);
-            this.txtTipoConta.Name = "txtTipoConta";
-            this.txtTipoConta.Size = new System.Drawing.Size(100, 20);
-            this.txtTipoConta.TabIndex = 2;
-            // 
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(57, 17);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(155, 20);
             this.txtValor.TabIndex = 7;
-            // 
-            // lblSaldos
-            // 
-            this.lblSaldos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblSaldos.Location = new System.Drawing.Point(459, 157);
-            this.lblSaldos.Name = "lblSaldos";
-            this.lblSaldos.Size = new System.Drawing.Size(139, 110);
-            this.lblSaldos.TabIndex = 14;
             // 
             // gpCadConta
             // 
@@ -311,14 +278,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 310);
+            this.ClientSize = new System.Drawing.Size(460, 310);
             this.Controls.Add(this.gpConta);
-            this.Controls.Add(this.txtNroConta);
-            this.Controls.Add(this.txtLimiteConta);
-            this.Controls.Add(this.txtTipoConta);
             this.Controls.Add(this.gpTransConta);
             this.Controls.Add(this.gpCadConta);
-            this.Controls.Add(this.lblSaldos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -332,7 +295,6 @@
             this.gpConta.ResumeLayout(false);
             this.gpConta.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -347,12 +309,8 @@
         private System.Windows.Forms.Button btnCriarConta;
         private System.Windows.Forms.Button btnDepositar;
         private System.Windows.Forms.Button btnSacar;
-        private System.Windows.Forms.TextBox txtNroConta;
         private System.Windows.Forms.TextBox txtTitular;
-        private System.Windows.Forms.TextBox txtLimiteConta;
-        private System.Windows.Forms.TextBox txtTipoConta;
         private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Label lblSaldos;
         private System.Windows.Forms.GroupBox gpCadConta;
         private System.Windows.Forms.GroupBox gpTransConta;
         private System.Windows.Forms.ListBox lstTrans;
