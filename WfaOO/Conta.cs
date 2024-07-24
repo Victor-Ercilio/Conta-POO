@@ -8,7 +8,7 @@ namespace WfaOO
 {
     public enum TipoConta
     {
-        COMUM,
+        COMUM = 1,
         ESPECIAL
     }
 
