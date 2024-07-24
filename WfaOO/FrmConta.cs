@@ -23,6 +23,8 @@ namespace WfaOO
             gpTransConta.Enabled = false;
         }
 
+        private TipoConta TipoConta {  get; set; }
+
         Conta_Comum conta_Comum = new Conta_Comum();
         Conta_Especial conta_Especial = new Conta_Especial();
         private void btnCriarConta_Click(object sender, EventArgs e)
