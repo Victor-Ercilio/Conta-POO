@@ -36,13 +36,15 @@ namespace WfaOO
             }
 
             lblSaldos.Text = "";
+            lstTrans.Items.Clear();
 
-            if(cmbTipoConta.SelectedItem.ToString() == "Comum")
+            if (cmbTipoConta.SelectedItem.ToString() == "Comum")
             {
                 contaComum.Conta_Nro = int.Parse(mskNroConta.Text);
                 contaComum.Conta_Titular = txtTitular.Text;
                 contaComum.Conta_Limite = 0;
                 contaComum.Conta_Tipo = 1;
+                TipoConta = TipoConta.COMUM;
                 
                 txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
             }
@@ -52,8 +54,9 @@ namespace WfaOO
                 contaEspecial.Conta_Titular = txtTitular.Text;
                 contaEspecial.Conta_Limite = (int) nmrcLimiteConta.Value;
                 contaEspecial.Conta_Tipo = 2;
+                TipoConta = TipoConta.ESPECIAL;
 
-                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+                txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}";
             }
 
             gpTransConta.Enabled = true;
@@ -86,11 +89,27 @@ namespace WfaOO
                     $"Limite = {conta_Especial.Conta_Limite}\n");
             }*/
             }
-        }
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
+            if (!double.TryParse(txtValor.Text, out double valor))
+                return;
 
+            if(valor  < 0) return;
+
+            if(TipoConta == TipoConta.COMUM)
+            {
+                contaComum.Depositar(valor);
+                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+            }
+            else
+            {
+                contaEspecial.Depositar(valor);
+                txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}";
+            }
+
+            lstTrans.Items.Insert(0, $" + {valor:C2}");
+            /*
             if (int.Parse(txtTipoConta.Text) == 1)
             {
                 conta_Comum.Depositar(double.Parse(txtValor.Text));
@@ -110,15 +129,32 @@ namespace WfaOO
                     $"Saldo = {conta_Especial.Conta_Saldo}\t" +
                     $"Limite = {conta_Especial.Conta_Limite}\n");
                 
+            }*/
             }
-        }
 
         private void btnSacar_Click(object sender, EventArgs e)
         {
 
             try
             {
+                if (!double.TryParse(txtValor.Text, out double valor))
+                    return;
 
+                if (valor < 0) return;
+
+                if (TipoConta == TipoConta.COMUM)
+                {
+                    contaComum.Sacar(valor);
+                    txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+                }
+                else
+                {
+                    contaEspecial.Sacar(valor);
+                    txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}"; ;
+                }
+
+                lstTrans.Items.Insert(0, $" - {valor:C2}");
+                /*
                 if (int.Parse(txtTipoConta.Text) == 1)
                 {
                     conta_Comum.Sacar(double.Parse(txtValor.Text));
@@ -137,13 +173,25 @@ namespace WfaOO
                     lstTrans.Items.Add(
                         $"Saldo = {conta_Especial.Conta_Saldo}\t" +
                         $"Limite = {conta_Especial.Conta_Limite}\n");
+                }*/
                 }
-            }
             catch (System.ArgumentException erro)
             {
                 MessageBox.Show(erro.Message);
             }
 
+        }
+
+        private void cmbTipoConta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = cmbTipoConta.SelectedIndex;
+            int naoSelecionado = -1;
+            int contaComumSelecionado = 0;
+
+            if (selectedIndex == naoSelecionado || selectedIndex == contaComumSelecionado)
+                nmrcLimiteConta.Enabled = false;
+            else
+                nmrcLimiteConta.Enabled = true;
         }
     }
 }
