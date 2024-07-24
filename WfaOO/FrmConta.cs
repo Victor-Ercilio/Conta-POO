@@ -12,8 +12,8 @@ namespace WfaOO
 {
     public partial class FrmConta : Form
     {
-        private Conta_Comum contaComum;
-        private Conta_Especial contaEspecial;
+        private readonly Conta_Comum contaComum;
+        private readonly Conta_Especial contaEspecial;
 
         public FrmConta()
         {
@@ -25,8 +25,6 @@ namespace WfaOO
 
         private TipoConta TipoConta {  get; set; }
 
-        Conta_Comum conta_Comum = new Conta_Comum();
-        Conta_Especial conta_Especial = new Conta_Especial();
         private void btnCriarConta_Click(object sender, EventArgs e)
         {
             if(cmbTipoConta.SelectedIndex == -1)
@@ -35,7 +33,6 @@ namespace WfaOO
                 return;
             }
 
-            lblSaldos.Text = "";
             lstTrans.Items.Clear();
 
             if (cmbTipoConta.SelectedItem.ToString() == "Comum")
@@ -60,34 +57,7 @@ namespace WfaOO
             }
 
             gpTransConta.Enabled = true;
-            /*
-            if (int.Parse(txtTipoConta.Text) == 1)
-            {
-                conta_Comum.Conta_Nro = int.Parse(txtNroConta.Text);
-                conta_Comum.Conta_Titular = txtTitular.Text;
-                conta_Comum.Conta_Tipo = int.Parse(txtTipoConta.Text);
-                conta_Comum.Conta_Limite = 0;
-                lblSaldos.Text += "Conta Comum\n";
-                lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
-                lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
-
-                lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
-                lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
-            }
-            else
-            {
-                conta_Especial.Conta_Nro = int.Parse(txtNroConta.Text);
-                conta_Especial.Conta_Titular = txtTitular.Text;
-                conta_Especial.Conta_Tipo = int.Parse(txtTipoConta.Text);
-                conta_Especial.Conta_Limite = double.Parse(txtLimiteConta.Text);
-                lblSaldos.Text += $"Conta Especial {lstTrans.Items.Count}\n";
-                lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
-                lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
-
-                lstTrans.Items.Add(
-                    $"Saldo = {conta_Especial.Conta_Saldo}\t" + 
-                    $"Limite = {conta_Especial.Conta_Limite}\n");
-            }*/
+            
         }
 
         private void btnDepositar_Click(object sender, EventArgs e)
@@ -109,27 +79,6 @@ namespace WfaOO
             }
 
             lstTrans.Items.Insert(0, $" + {valor:C2}");
-            /*
-            if (int.Parse(txtTipoConta.Text) == 1)
-            {
-                conta_Comum.Depositar(double.Parse(txtValor.Text));
-                lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
-                lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
-                
-                lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
-                lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
-            }
-            else
-            {
-                conta_Especial.Depositar(double.Parse(txtValor.Text));
-                lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
-                lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
-
-                lstTrans.Items.Add(
-                    $"Saldo = {conta_Especial.Conta_Saldo}\t" +
-                    $"Limite = {conta_Especial.Conta_Limite}\n");
-                
-            }*/
         }
 
         private void btnSacar_Click(object sender, EventArgs e)
@@ -154,26 +103,6 @@ namespace WfaOO
                 }
 
                 lstTrans.Items.Insert(0, $" - {valor:C2}");
-                /*
-                if (int.Parse(txtTipoConta.Text) == 1)
-                {
-                    conta_Comum.Sacar(double.Parse(txtValor.Text));
-                    lblSaldos.Text += "Saldo = " + conta_Comum.Conta_Saldo + "\n";
-                    lblSaldos.Text += "Limite = " + conta_Comum.Conta_Limite + "\n";
-
-                    lstTrans.Items.Add($"Saldo = {conta_Comum.Conta_Saldo}\t");
-                    lstTrans.Items.Add($"Limite = {conta_Comum.Conta_Limite}\n");
-                }
-                else
-                {
-                    conta_Especial.Sacar(double.Parse(txtValor.Text));
-                    lblSaldos.Text += "Saldo = " + conta_Especial.Conta_Saldo + "\n";
-                    lblSaldos.Text += "Limite = " + conta_Especial.Conta_Limite + "\n";
-
-                    lstTrans.Items.Add(
-                        $"Saldo = {conta_Especial.Conta_Saldo}\t" +
-                        $"Limite = {conta_Especial.Conta_Limite}\n");
-                }*/
             }
             catch (System.ArgumentException erro)
             {
