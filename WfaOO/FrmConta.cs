@@ -88,7 +88,7 @@ namespace WfaOO
                     $"Saldo = {conta_Especial.Conta_Saldo}\t" + 
                     $"Limite = {conta_Especial.Conta_Limite}\n");
             }*/
-            }
+        }
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
@@ -130,7 +130,7 @@ namespace WfaOO
                     $"Limite = {conta_Especial.Conta_Limite}\n");
                 
             }*/
-            }
+        }
 
         private void btnSacar_Click(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace WfaOO
             {
                 if (!double.TryParse(txtValor.Text, out double valor))
                     return;
-
+                
                 if (valor < 0) return;
 
                 if (TipoConta == TipoConta.COMUM)
@@ -174,7 +174,7 @@ namespace WfaOO
                         $"Saldo = {conta_Especial.Conta_Saldo}\t" +
                         $"Limite = {conta_Especial.Conta_Limite}\n");
                 }*/
-                }
+            }
             catch (System.ArgumentException erro)
             {
                 MessageBox.Show(erro.Message);
