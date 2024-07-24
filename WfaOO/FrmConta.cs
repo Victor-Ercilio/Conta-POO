@@ -27,7 +27,35 @@ namespace WfaOO
         Conta_Especial conta_Especial = new Conta_Especial();
         private void btnCriarConta_Click(object sender, EventArgs e)
         {
+            if(cmbTipoConta.SelectedIndex == -1)
+            {
+                gpTransConta.Enabled = false;
+                return;
+            }
+
             lblSaldos.Text = "";
+
+            if(cmbTipoConta.SelectedItem.ToString() == "Comum")
+            {
+                contaComum.Conta_Nro = int.Parse(mskNroConta.Text);
+                contaComum.Conta_Titular = txtTitular.Text;
+                contaComum.Conta_Limite = 0;
+                contaComum.Conta_Tipo = 1;
+                
+                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+            }
+            else
+            {
+                contaEspecial.Conta_Nro = int.Parse(mskNroConta.Text);
+                contaEspecial.Conta_Titular = txtTitular.Text;
+                contaEspecial.Conta_Limite = (int) nmrcLimiteConta.Value;
+                contaEspecial.Conta_Tipo = 2;
+
+                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+            }
+
+            gpTransConta.Enabled = true;
+            /*
             if (int.Parse(txtTipoConta.Text) == 1)
             {
                 conta_Comum.Conta_Nro = int.Parse(txtNroConta.Text);
