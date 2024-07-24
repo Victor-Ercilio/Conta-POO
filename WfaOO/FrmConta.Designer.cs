@@ -44,6 +44,19 @@
             this.txtTipoConta = new System.Windows.Forms.TextBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.lblSaldos = new System.Windows.Forms.Label();
+            this.gpCadConta = new System.Windows.Forms.GroupBox();
+            this.gpTransConta = new System.Windows.Forms.GroupBox();
+            this.lstTrans = new System.Windows.Forms.ListBox();
+            this.cmbTipoConta = new System.Windows.Forms.ComboBox();
+            this.mskNroConta = new System.Windows.Forms.MaskedTextBox();
+            this.nmrcLimiteConta = new System.Windows.Forms.NumericUpDown();
+            this.txtSaldoConta = new System.Windows.Forms.TextBox();
+            this.lblTrans = new System.Windows.Forms.Label();
+            this.gpConta = new System.Windows.Forms.GroupBox();
+            this.gpCadConta.SuspendLayout();
+            this.gpTransConta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrcLimiteConta)).BeginInit();
+            this.gpConta.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNroConta
