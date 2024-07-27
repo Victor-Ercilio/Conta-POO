@@ -23,13 +23,15 @@ namespace WfaOO
             Titular = "";
         }
 
-        public double Conta_Limite { get; set; }
+        public int Numero { get; set; }
 
-        public string Conta_Titular { get; set; }
+        public decimal Saldo { get; protected set; }
 
-        public int Conta_Tipo { get; set; }
+        public decimal Limite { get; set; }
 
-        public virtual void Sacar(double valor)
+        public string Titular { get; set; }
+
+        public virtual void Sacar(decimal valor)
         {
             
         }
