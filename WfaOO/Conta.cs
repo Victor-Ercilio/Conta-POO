@@ -36,9 +36,12 @@ namespace WfaOO
             
         }
 
-        public void Depositar(double valor)
+        public void Depositar(decimal valor)
         {
-            this.Conta_Saldo += valor;
+            if (valor < 0)
+                this.Saldo += valor;
+            else
+                throw new ArgumentException("Valor para depósito não pode ser negativo");
         } 
 
 
