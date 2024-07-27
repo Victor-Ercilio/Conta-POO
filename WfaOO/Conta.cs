@@ -12,7 +12,7 @@ namespace WfaOO
         ESPECIAL
     }
 
-    class Conta
+    abstract class Conta
     {
         public int Conta_Nro { get; set; }
 
