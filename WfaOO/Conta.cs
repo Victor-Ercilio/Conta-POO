@@ -14,9 +14,14 @@ namespace WfaOO
 
     abstract class Conta
     {
-        public int Conta_Nro { get; set; }
 
-        public double Conta_Saldo { get; protected set; }
+        protected Conta() 
+        {
+            Numero = 1;
+            Saldo = 0.0m;
+            Limite = 0.0m;
+            Titular = "";
+        }
 
         public double Conta_Limite { get; set; }
 
