@@ -37,23 +37,20 @@ namespace WfaOO
 
             if (cmbTipoConta.SelectedItem.ToString() == "Comum")
             {
-                contaComum.Conta_Nro = int.Parse(mskNroConta.Text);
-                contaComum.Conta_Titular = txtTitular.Text;
-                contaComum.Conta_Limite = 0;
-                contaComum.Conta_Tipo = 1;
+                contaComum.Numero = int.Parse(mskNroConta.Text);
+                contaComum.Titular = txtTitular.Text;
                 TipoConta = TipoConta.COMUM;
                 
-                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+                txtSaldoConta.Text = $"{contaComum.Saldo:C2}";
             }
             else
             {
-                contaEspecial.Conta_Nro = int.Parse(mskNroConta.Text);
-                contaEspecial.Conta_Titular = txtTitular.Text;
-                contaEspecial.Conta_Limite = (int) nmrcLimiteConta.Value;
-                contaEspecial.Conta_Tipo = 2;
+                contaEspecial.Numero = int.Parse(mskNroConta.Text);
+                contaEspecial.Titular = txtTitular.Text;
+                contaEspecial.Limite = nmrcLimiteConta.Value;
                 TipoConta = TipoConta.ESPECIAL;
 
-                txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}";
+                txtSaldoConta.Text = $"{(contaEspecial.Saldo + contaEspecial.Limite):C2}";
             }
 
             gpTransConta.Enabled = true;
@@ -62,7 +59,7 @@ namespace WfaOO
 
         private void btnDepositar_Click(object sender, EventArgs e)
         {
-            if (!double.TryParse(txtValor.Text, out double valor))
+            if (!decimal.TryParse(txtValor.Text, out decimal valor))
                 return;
 
             if(valor  < 0) return;
@@ -70,12 +67,12 @@ namespace WfaOO
             if(TipoConta == TipoConta.COMUM)
             {
                 contaComum.Depositar(valor);
-                txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+                txtSaldoConta.Text = $"{contaComum.Saldo:C2}";
             }
             else
             {
                 contaEspecial.Depositar(valor);
-                txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}";
+                txtSaldoConta.Text = $"{(contaEspecial.Saldo + contaEspecial.Limite):C2}";
             }
 
             lstTrans.Items.Insert(0, $" + {valor:C2}");
@@ -86,7 +83,7 @@ namespace WfaOO
 
             try
             {
-                if (!double.TryParse(txtValor.Text, out double valor))
+                if (!decimal.TryParse(txtValor.Text, out decimal valor))
                     return;
                 
                 if (valor < 0) return;
@@ -94,12 +91,12 @@ namespace WfaOO
                 if (TipoConta == TipoConta.COMUM)
                 {
                     contaComum.Sacar(valor);
-                    txtSaldoConta.Text = $"{contaComum.Conta_Saldo:C2}";
+                    txtSaldoConta.Text = $"{contaComum.Saldo:C2}";
                 }
                 else
                 {
                     contaEspecial.Sacar(valor);
-                    txtSaldoConta.Text = $"{(contaEspecial.Conta_Saldo + contaEspecial.Conta_Limite):C2}"; ;
+                    txtSaldoConta.Text = $"{(contaEspecial.Saldo + contaEspecial.Limite):C2}"; ;
                 }
 
                 lstTrans.Items.Insert(0, $" - {valor:C2}");
