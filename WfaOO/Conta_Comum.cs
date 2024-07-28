@@ -9,14 +9,16 @@ namespace WfaOO
     class Conta_Comum : Conta
     {
         public Conta_Comum() : base() { }
+
+        public override void Sacar(decimal valor)
         {
-            if(this.Conta_Saldo < valor)
+            if(this.Saldo < valor)
             {
                 throw new System.ArgumentException("Saldo Indisponível");
             }
             else
             {
-                this.Conta_Saldo -= valor;
+                this.Saldo -= valor;
             }
         }
     }

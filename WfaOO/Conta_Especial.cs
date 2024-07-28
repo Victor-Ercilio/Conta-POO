@@ -9,23 +9,24 @@ namespace WfaOO
     class Conta_Especial : Conta
     {
         public Conta_Especial() : base() { }
+
+        public override void Sacar(decimal valor)
         {
-            if(this.Conta_Saldo + this.Conta_Limite < valor)
+            if(this.Saldo + this.Limite < valor)
             {
                 throw new System.ArgumentException("Saldo Indisponível");
             }
             else
             {
-                double saldo_dif = this.Conta_Saldo + this.Conta_Limite;
-                if(this.Conta_Saldo > valor)
+                if(this.Saldo > valor)
                 {
-                    this.Conta_Saldo -= valor;
+                    this.Saldo -= valor;
                 }
                 else
                 {
-                    saldo_dif = valor - this.Conta_Saldo;
-                    this.Conta_Saldo = 0;
-                    this.Conta_Limite -= saldo_dif;
+                    decimal saldo_dif = valor - this.Saldo;
+                    this.Saldo = 0;
+                    this.Limite -= saldo_dif;
                 }
             }
         }
