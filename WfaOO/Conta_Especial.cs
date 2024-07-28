@@ -8,7 +8,7 @@ namespace WfaOO
 {
     class Conta_Especial : Conta
     {
-        public override void Sacar(double valor)
+        public Conta_Especial() : base() { }
         {
             if(this.Conta_Saldo + this.Conta_Limite < valor)
             {

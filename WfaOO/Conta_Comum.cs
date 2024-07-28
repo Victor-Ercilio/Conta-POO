@@ -8,7 +8,7 @@ namespace WfaOO
 {
     class Conta_Comum : Conta
     {
-        public override void Sacar(double valor)
+        public Conta_Comum() : base() { }
         {
             if(this.Conta_Saldo < valor)
             {
